@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a onclick="filterImages('all')">All Photos</a>
+        <a onclick="filterImages('car')">Car</a>
+        <a onclick="filterImages('nature')">Nature</a>
+        <a onclick="filterImages('technology')">Technology</a>
+    </div>
+
+    <!-- Gallery -->
+    <div class="container">
+        <h1>Image Gallery</h1>
+        <div class="gallery">
+            <!-- Cars -->
+            <div class="image-item car"><img src="car.webp" onclick="openItem(this)"></div>
+            <div class="image-item car"><img src="car1.jpg" onclick="openItem(this)"></div>
+            <div class="image-item car"><img src="car2.jpg" onclick="openItem(this)"></div>
+            <div class="image-item car"><img src="car3.jpg" onclick="openItem(this)"></div>
+            <div class="image-item car"><img src="car4.jpg" onclick="openItem(this)"></div>
+            <div class="image-item car"><img src="car5.jpg" onclick="openItem(this)"></div>
+
+            <!-- Nature -->
+            <div class="image-item nature"><img src="sunset (2).jpg" onclick="openItem(this)"></div>
+            <div class="image-item nature"><img src="sunset.jpg" onclick="openItem(this)"></div>
+            <div class="image-item nature"><img src="sunset1.webp" onclick="openItem(this)"></div>
+            <div class="image-item nature"><img src="sunset2.jpg" onclick="openItem(this)"></div>
+            <div class="image-item nature"><img src="sunset3.jpg" onclick="openItem(this)"></div>
+            <div class="image-item nature"><img src="sunset4.jpg" onclick="openItem(this)"></div>
+
+            <!-- Technology -->
+            <div class="image-item technology"><img src="Tech.jpg" onclick="openItem(this)"></div>
+            <div class="image-item technology"><img src="Tech1.jpg" onclick="openItem(this)"></div>
+            <div class="image-item technology"><img src="Tech2.jpg" onclick="openItem(this)"></div>
+            <div class="image-item technology"><img src="Tech3.jpg" onclick="openItem(this)"></div>
+            <div class="image-item technology"><img src="Tech4.jpg" onclick="openItem(this)"></div>
+            <div class="image-item technology"><img src="Tech5.jpg" onclick="openItem(this)"></div>
+        </div>
+    </div>
+
+    <!-- Modal for Enlarged Images -->
+    <div id="imageModal">
+        <button class="close-btn" onclick="closeModal()">Close</button>
+        <img id="modalImg">
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function filterImages(category) {
+            let images = document.querySelectorAll('.image-item');
+            images.forEach(img => {
+                if (category === 'all' || img.classList.contains(category)) {
+                    img.style.display = 'block';
+                } else {
+                    img.style.display = 'none';
+                }
+            });
+        }
+
+        function openItem(img) {
+            document.getElementById('modalImg').src = img.src;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
